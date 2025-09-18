@@ -1,0 +1,334 @@
+{
+  "properties": {
+    "Filename": {
+      "description": "Name of file, to be filled programmatically.",
+      "type": "string"
+    },
+    "Appraisal Form Type": {
+      "description": "The appraisal form designation found in the document, typically in the footer area below the reconciliation section. Extract any form reference as it appears in the document.",
+      "type": "string"
+    },
+    "Subject Property Address": {
+      "description": "Full address of the property being appraised.",
+      "type": "string"
+    },
+    "Effective Date of Appraisal": {
+      "description": "The effective date of the appraisal, could also be the inspection date or date when the appraisal was valued, in YYYY-MM-DD format.",
+      "type": "string",
+      "format": "date"
+    },
+    "Appraiser Name": {
+      "description": "Name of the person who conducted the appraisal.",
+      "type": "string"
+    },
+    "Borrower Name": {
+      "description": "Entity name of the borrower.",
+      "type": "string"
+    },
+    "Subject Additional Square Footage": {
+      "description": "Numeric square footage value of any additional structures (ADU, basement, casita, JADU) separate from main living area. Return '0' if explicitly stated as 0 sf, empty string if not mentioned.",
+      "type": "string"
+    },
+    "Document Title": {
+      "description": "The title or name of the document on the first page.",
+      "type": "string"
+    },
+    "Subject Property Value": {
+      "description": "The appraised value of the subject property (numeric value only).",
+      "type": "number"
+    },
+    "As-Is Value": {
+      "description": "The as-is value based on reconciliation box or additional comments/addendum. If box 1 ('as is') is checked, this value is from the reconciliation box. If boxes 2-4 are checked, this value is from additional comments/addendum. Return null if not found.",
+      "type": "number"
+    },
+    "ARV Value": {
+      "description": "The after repair value based on reconciliation box or additional comments/addendum. If boxes 2-4 are checked, this value is from the reconciliation box. If box 1 ('as is') is checked, this value is from additional comments/addendum. Return null if not found.",
+      "type": "number"
+    },
+    "Sales Comparables": {
+      "description": "Regular sales comparison approach comparables used for current market value.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Comp Address": {
+            "description": "Address of the comparable property.",
+            "type": "string"
+          },
+          "Comp Bed Count": {
+            "description": "Number of bedrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp Bath Count": {
+            "description": "Number of bathrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp GLA": {
+            "description": "Gross living area in square feet (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Price": {
+            "description": "Original sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Adjusted Sale Price": {
+            "description": "Final adjusted sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Date": {
+            "description": "Sale date in YYYY-MM-DD format.",
+            "type": "string",
+            "format": "date"
+          },
+          "Comp Data Source": {
+            "description": "Where the sale price is coming from, e.g., 'MLS', 'Public Records'.",
+            "type": "string"
+          },
+          "Comp Lot Size": {
+            "description": "Lot size (numeric value only, in square feet or acres).",
+            "type": "number"
+          },
+          "Comp List of Amenities": {
+            "description": "List of amenities or features.",
+            "type": "string"
+          },
+          "Comp Distance": {
+            "description": "Distance from subject property (e.g., '0.25 miles', '1.2 km', '500 feet'). Look for distance measurements on location map or comparable descriptions.",
+            "type": "string"
+          },
+          "As-Is/ARV": {
+            "description": "Whether this is an 'As-Is' or 'ARV' comparable based on context and sections where it appears.",
+            "type": "string"
+          },
+          "Comp Additional Square Footage": {
+            "description": "Numeric square footage value of any additional structures (ADU, basement, casita, JADU) for this comparable property. Return '0' if explicitly stated as 0 sf, empty string if not mentioned.",
+            "type": "string"
+          },
+          "Comp Number and Type": {
+            "description": "The comparable number and section type, e.g., 'Sales Comparable #1', 'Sales Comparable #2'.",
+            "type": "string"
+          }
+        },
+        "required": ["Comp Address", "Comp Number and Type"]
+      }
+    },
+    "ARV Comparables": {
+      "description": "ARV (After Repair Value) comparables used specifically for determining ARV value.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Comp Address": {
+            "description": "Address of the ARV comparable property.",
+            "type": "string"
+          },
+          "Comp Bed Count": {
+            "description": "Number of bedrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp Bath Count": {
+            "description": "Number of bathrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp GLA": {
+            "description": "Gross living area in square feet (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Price": {
+            "description": "Original sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Adjusted Sale Price": {
+            "description": "Final adjusted sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Date": {
+            "description": "Sale date in YYYY-MM-DD format.",
+            "type": "string",
+            "format": "date"
+          },
+          "Comp Data Source": {
+            "description": "Where the sale price is coming from, e.g., 'MLS', 'Public Records'.",
+            "type": "string"
+          },
+          "Comp Lot Size": {
+            "description": "Lot size (numeric value only, in square feet or acres).",
+            "type": "number"
+          },
+          "Comp List of Amenities": {
+            "description": "List of amenities or features.",
+            "type": "string"
+          },
+          "Comp Distance": {
+            "description": "Distance from subject property (e.g., '0.25 miles', '1.2 km', '500 feet'). Look for distance measurements on location map or comparable descriptions.",
+            "type": "string"
+          },
+          "As-Is/ARV": {
+            "description": "Whether this is an 'As-Is' or 'ARV' comparable based on context and sections where it appears.",
+            "type": "string"
+          },
+          "Comp Additional Square Footage": {
+            "description": "Numeric square footage value of any additional structures (ADU, basement, casita, JADU) for this comparable property. Return '0' if explicitly stated as 0 sf, empty string if not mentioned.",
+            "type": "string"
+          },
+          "Comp Number and Type": {
+            "description": "The comparable number and section type, e.g., 'ARV Comparable #1', 'ARV Comparable #2'.",
+            "type": "string"
+          }
+        },
+        "required": ["Comp Address", "Comp Number and Type"]
+      }
+    },
+    "Land Comparables": {
+      "description": "Land sale comparables used for land value analysis.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Comp Address": {
+            "description": "Address of the land comparable property.",
+            "type": "string"
+          },
+          "Comp Bed Count": {
+            "description": "Number of bedrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp Bath Count": {
+            "description": "Number of bathrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp GLA": {
+            "description": "Gross living area in square feet (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Price": {
+            "description": "Original sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Adjusted Sale Price": {
+            "description": "Final adjusted sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Date": {
+            "description": "Sale date in YYYY-MM-DD format.",
+            "type": "string",
+            "format": "date"
+          },
+          "Comp Data Source": {
+            "description": "Where the sale price is coming from, e.g., 'MLS', 'Public Records'.",
+            "type": "string"
+          },
+          "Comp Lot Size": {
+            "description": "Lot size (numeric value only, in square feet or acres).",
+            "type": "number"
+          },
+          "Comp List of Amenities": {
+            "description": "List of amenities or features.",
+            "type": "string"
+          },
+          "Comp Distance": {
+            "description": "Distance from subject property (e.g., '0.25 miles', '1.2 km', '500 feet'). Look for distance measurements on location map or comparable descriptions.",
+            "type": "string"
+          },
+          "As-Is/ARV": {
+            "description": "Whether this is an 'As-Is' or 'ARV' comparable based on context and sections where it appears.",
+            "type": "string"
+          },
+          "Comp Additional Square Footage": {
+            "description": "Numeric square footage value of any additional structures (ADU, basement, casita, JADU) for this comparable property. Return '0' if explicitly stated as 0 sf, empty string if not mentioned.",
+            "type": "string"
+          },
+          "Comp Number and Type": {
+            "description": "The comparable number and section type, e.g., 'Land Comparable #1', 'Land Comparable #2'.",
+            "type": "string"
+          }
+        },
+        "required": ["Comp Address", "Comp Number and Type"]
+      }
+    },
+    "Other Comparables": {
+      "description": "Other types of comparables (rental comparables, listings, etc.).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Comp Address": {
+            "description": "Address of the comparable property.",
+            "type": "string"
+          },
+          "Comp Bed Count": {
+            "description": "Number of bedrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp Bath Count": {
+            "description": "Number of bathrooms (numeric value only).",
+            "type": "number"
+          },
+          "Comp GLA": {
+            "description": "Gross living area in square feet (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Price": {
+            "description": "Original sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Adjusted Sale Price": {
+            "description": "Final adjusted sale price (numeric value only).",
+            "type": "number"
+          },
+          "Comp Sale Date": {
+            "description": "Sale date in YYYY-MM-DD format.",
+            "type": "string",
+            "format": "date"
+          },
+          "Comp Data Source": {
+            "description": "Where the sale price is coming from, e.g., 'MLS', 'Public Records'.",
+            "type": "string"
+          },
+          "Comp Lot Size": {
+            "description": "Lot size (numeric value only, in square feet or acres).",
+            "type": "number"
+          },
+          "Comp List of Amenities": {
+            "description": "List of amenities or features.",
+            "type": "string"
+          },
+          "Comp Distance": {
+            "description": "Distance from subject property (e.g., '0.25 miles', '1.2 km', '500 feet'). Look for distance measurements on location map or comparable descriptions.",
+            "type": "string"
+          },
+          "As-Is/ARV": {
+            "description": "Whether this is an 'As-Is' or 'ARV' comparable based on context and sections where it appears.",
+            "type": "string"
+          },
+          "Comp Additional Square Footage": {
+            "description": "Numeric square footage value of any additional structures (ADU, basement, casita, JADU) for this comparable property. Return '0' if explicitly stated as 0 sf, empty string if not mentioned.",
+            "type": "string"
+          },
+          "Comp Number and Type": {
+            "description": "The comparable number and section type, e.g., 'Rental Comparable #1', 'Listing #1'.",
+            "type": "string"
+          }
+        },
+        "required": ["Comp Address", "Comp Number and Type"]
+      }
+    }
+  },
+  "required": [
+    "Filename",
+    "Appraisal Form Type", 
+    "Subject Property Address",
+    "Subject Additional Square Footage",
+    "Document Title",
+    "Effective Date of Appraisal",
+    "Appraiser Name",
+    "Borrower Name",
+    "Subject Property Value",
+    "As-Is Value",
+    "ARV Value",
+    "Sales Comparables",
+    "ARV Comparables", 
+    "Land Comparables",
+    "Other Comparables"
+  ]
+}

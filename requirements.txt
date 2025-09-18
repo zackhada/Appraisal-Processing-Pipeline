@@ -1,0 +1,34 @@
+# Web Scraping and Automation
+selenium==4.15.0
+beautifulsoup4==4.12.2
+
+# AI and Document Processing
+openai==1.3.0
+llama-parse==0.4.3
+llama-index==0.9.14
+
+# Data Processing and Analysis
+pandas==2.1.4
+numpy==1.24.3
+
+# Azure Cloud Services
+azure-storage-blob==12.19.0
+
+# Environment and Configuration
+python-dotenv==1.0.0
+
+# Utilities and Helpers
+requests==2.31.0
+pathlib2==2.3.7
+
+# Development and Testing (optional)
+pytest==7.4.0
+pytest-asyncio==0.21.1
+flake8==6.0.0
+black==23.12.0
+
+# Progress tracking (optional)
+tqdm==4.66.1
+
+# Chrome WebDriver (install separately)
+# Download from: https://chromedriver.chromium.org/

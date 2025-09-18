@@ -1,0 +1,20 @@
+# AI and Document Processing API Keys
+OPENAI_API_KEY=your_openai_api_key_here
+LLAMA_CLOUD_API_KEY=your_llama_cloud_api_key_here
+
+# Web Portal Authentication
+NOVA_USERNAME=your_username
+NOVA_PASSWORD=your_password
+
+# Azure Storage Configuration
+AZURE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_key;EndpointSuffix=core.windows.net
+
+# Processing Configuration
+MAX_LOANS=10
+HEADLESS_MODE=false
+
+# Optional: Advanced Configuration
+CONCURRENT_PROCESSES=4
+BATCH_SIZE=50
+RETRY_ATTEMPTS=3
+TIMEOUT_SECONDS=30
